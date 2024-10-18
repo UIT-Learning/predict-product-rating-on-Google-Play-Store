@@ -41,7 +41,7 @@ def home():
         data = [category, rating_count, installs, minimum_installs, maximum_installs, free, price, size, minimum_android, content_rating, ad_supported, in_app_purchases, editors_choice]
         data = np.array(data).reshape(1, -1)
         dataInput = [category, rating_count, installs, minimum_installs, maximum_installs, free, price, size, minimum_android, content_rating, ad_supported, in_app_purchases, editors_choice]
-        prediction = model.predict(data)
+        prediction = model.predict(data) 
         prediction1 = model1.predict(data)
         output = float(prediction[0])
         output1 = float(prediction1[0])
