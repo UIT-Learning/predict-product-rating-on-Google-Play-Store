@@ -1,6 +1,8 @@
 from unicodedata import category
 from flask import Flask, escape, request, render_template
 import  pickle
+import pickle
+from sklearn.tree import DecisionTreeClassifier
 from xgboost import XGBRegressor
 import numpy as np
 # import oss
@@ -12,8 +14,13 @@ app = Flask(__name__)
 
 # app.run(host='0.0.0.0', port=port, debug=True)
 
-model = pickle.load(open('rating_pred_tree', 'rb'))
-model1 = pickle.load(open('rating_pred_xgb', 'rb'))
+# Load the Decision Tree model
+with open('linear_regression_model1', 'rb') as file:
+    model = pickle.load(file)
+
+# Load the XGBoost model
+with open('linear_regression_model', 'rb') as file:
+    model1 = pickle.load(file)
 
 @app.route("/", methods=["GET", "POST"])
 def home():
